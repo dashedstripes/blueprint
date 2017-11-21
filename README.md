@@ -106,3 +106,29 @@ Display some text. The only data here is a text parameter with what you want to 
   }
 }
 ```
+
+### Input
+
+Display a text input. Only data needed is the placeholder text.
+
+```javascript
+{
+  type: 'input',
+  data: {
+    placeholder: 'Enter your input here...'
+  }
+}
+```
+
+### Date
+
+Display a datepicker. Again, the only data needed is the placeholder text.
+
+```javascript
+{
+  type: 'date',
+  data: {
+    placeholder: 'Select a Date...'
+  }
+}
+```
