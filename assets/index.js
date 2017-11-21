@@ -71,6 +71,18 @@ let config =
       content:
         [
           {
+            type: 'date',
+            data: {
+              placeholder: 'Select a Date...'
+            }
+          },
+          {
+            type: 'input',
+            data: {
+              placeholder: 'Additional Notes...'
+            }
+          },
+          {
             type: 'button',
             data: {
               text: 'Book',
@@ -131,6 +143,12 @@ function renderBlockContent(content) {
       case 'text':
         renderText(item.data)
         break;
+      case 'date':
+        renderDate(item.data)
+        break;
+      case 'input':
+        renderInput(item.data)
+        break;
     }
   })
 }
@@ -167,4 +185,13 @@ function renderText(data) {
   compiled += `<p>${data.text}</p>`
 }
 
+function renderDate(data) {
+  compiled += `<input type="text" id="datepicker" placeholder="${data.placeholder}"/>`
+}
+
+function renderInput(data) {
+  compiled += `<input type="text" placeholder="${data.placeholder}"/>`
+}
+
 $('#app').html(compiled)
+$('#datepicker').datepicker()
