@@ -67,6 +67,18 @@ let config =
         ]
     },
     {
+      title: 'Find a Service Centre',
+      content:
+        [
+          {
+            type: 'map',
+            data: {
+              embed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2492.0791598488554!2d-0.483142684169452!3d51.346454979609156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876761d51b1c793%3A0xa1b9f87e35b40c23!2sPorsche+Service+Centre+Brooklands!5e0!3m2!1sen!2suk!4v1511345317754" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>'
+            }
+          }
+        ]
+    },
+    {
       title: 'Schedule an Inspection',
       content:
         [
@@ -149,6 +161,9 @@ function renderBlockContent(content) {
       case 'input':
         renderInput(item.data)
         break;
+      case 'map':
+        renderMap(item.data)
+        break;
     }
   })
 }
@@ -191,6 +206,10 @@ function renderDate(data) {
 
 function renderInput(data) {
   compiled += `<input type="text" placeholder="${data.placeholder}"/>`
+}
+
+function renderMap(data) {
+  compiled += data.embed
 }
 
 $('#app').html(compiled)

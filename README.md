@@ -132,3 +132,18 @@ Display a datepicker. Again, the only data needed is the placeholder text.
   }
 }
 ```
+
+### Map
+
+Display an embeded Google Map. To get this working you will need to find the embed code from Google Maps of the place you wish to display. On Google Maps there is a link to "Share or embed map", once you've clicked that select "Embed map", then copy the code that it provides. It should look like the following:
+
+```<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19859.110532725816!2d-0.17612799999999998!3d51.524428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1511345810993" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>```
+
+```javascript
+{
+  type: 'map',
+  data: {
+    embed: 'Here is where you paste the google maps embed code.'
+  }
+}
+```

@@ -46,3 +46,10 @@ input {
   font-size: 13px;
   padding: 10px;
 }
+
+/* Iframe */
+
+iframe {
+  width: 320px!important;
+  height: 250px!important;
+}
