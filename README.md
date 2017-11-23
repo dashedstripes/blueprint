@@ -4,7 +4,7 @@ This app allows you to build your own app by providing data. All layout and styl
 
 ## How to use
 
-In `app.js` there is an array called `config`. Inside that array, you can list as many objects as you like from the below list. The app will then take your configuration and display it - using best practice styling.
+To create the config data for an app, create a file in `assets/data`, then in `assets/iframe.html` replace the script on line 18 to link to your custom config.
 
 ### Creating your first block
 
