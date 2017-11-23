@@ -16,7 +16,7 @@ let config =
     {
       title: 'My block name', // This is the name of the block section, it will be shown as a heading.
       content: [
-        // This is where your block (listed below) will go...
+        // This is where your blocks (listed below) will go...
       ]
     }
   ]
