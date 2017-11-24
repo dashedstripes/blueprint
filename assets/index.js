@@ -35,10 +35,17 @@ client.metadata().then((metadata) => {
       }
 
       if (line[i].trim() === 'TEXT') {
+        let textData = ''
+        for (let j = i + 1; j < textConfig.split('\n').length; j++) {
+          if (line[j] === '') {
+            break
+          }
+          textData += line[j] + '\n'
+        }
         currentBlock.content.push({
           type: 'text',
           data: {
-            text: line[i + 1]
+            text: textData
           }
         })
       }
@@ -91,15 +98,6 @@ client.metadata().then((metadata) => {
       if (line[i].trim() === 'INPUT') {
         currentBlock.content.push({
           type: 'input',
-          data: {
-            placeholder: line[i + 1]
-          }
-        })
-      }
-
-      if (line[i].trim() === 'TEXT') {
-        currentBlock.content.push({
-          type: 'text',
           data: {
             placeholder: line[i + 1]
           }
@@ -192,7 +190,12 @@ function renderImage(data) {
 }
 
 function renderText(data) {
-  compiled += `<p>${data.text}</p>`
+  data.text.split('\n').forEach((line) => {
+    if (line !== '') {
+      compiled += `<p>${line}</p>`
+    }
+  })
+  compiled += '<p><br/></p>'
 }
 
 function renderDate(data) {
