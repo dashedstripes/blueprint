@@ -1,6 +1,6 @@
-# Dynamic 360
+# Blueprint
 
-A Zendesk ticket app that allows you to create your own static app from a plain text file.
+A Zendesk ticket app that allows you to create your own static app from your own configuration.
 
 ## Getting Started
 

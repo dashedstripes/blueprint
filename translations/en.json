@@ -1,8 +1,8 @@
 {
   "app": {
-    "name": "Zen Tunes",
-    "short_description": "Play the famous zen tunes in your help desk.",
-    "long_description": "Play the famous zen tunes in your help desk and \n listen to the beats it has to offer.",
+    "name": "Blueprint",
+    "short_description": "Create your own App.",
+    "long_description": "A Zendesk ticket app that allows you to create your own static app from your own configuration.",
     "installation_instructions": "Simply click install."
   }
 }
