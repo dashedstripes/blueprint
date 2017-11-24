@@ -49,7 +49,6 @@ The URL of the image
 The alt/title text for the image
 
 TABLE
-The number of rows
 A list of cells going from left to right, separated by commas, a row at a time.
 
 MAP
@@ -74,7 +73,6 @@ https://linkto.com/myimage.jpg
 This is an image.
 
 TABLE
-2
 ID, Status
 10042, Activated
 37258, Suspended
@@ -111,7 +109,6 @@ This is an image.
 A table of stuff
 
 TABLE
-2
 ID, Status
 10042, Activated
 37258, Suspended
