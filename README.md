@@ -112,8 +112,9 @@ A table of stuff
 
 TABLE
 2
-ID, Status, 10042
-Activated, 37258, Suspended
+ID, Status
+10042, Activated
+37258, Suspended
 
 -
 
