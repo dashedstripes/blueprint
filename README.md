@@ -52,10 +52,6 @@ TABLE
 The number of rows
 A list of cells going from left to right, a row at a time.
 
-BUTTON
-The text to show on the button
-Where the button will link to
-
 MAP
 An IFrame link taken from google maps
 
@@ -64,6 +60,10 @@ The placeholder text for a datepicker
 
 INPUT
 The placeholder text for an input field
+
+BUTTON
+The text to show on the button
+Where the button will link to
 ```
 
 ### Example Blocks
@@ -82,10 +82,6 @@ Activated
 37258
 Suspended
 
-BUTTON
-Click me
-#
-
 MAP
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5017.765014101546!2d-0.1786033289063308!3d51.514460882632704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ab2b05500a7%3A0x749d07ad72bbbe13!2sPaddington+London+Underground+Station!5e0!3m2!1sen!2suk!4v1511535243058" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
@@ -94,4 +90,56 @@ Select a date...
 
 INPUT
 Type something...
+
+BUTTON
+Click me
+#
+```
+
+### Completed Example Config
+
+Finally it's probably useful to see the above blocks in the context of a full configuration file.
+
+```
+-
+
+My Image
+
+IMAGE
+https://linkto.com/myimage.jpg
+This is an image.
+
+-
+
+A table of stuff
+
+TABLE
+2
+ID
+Status
+10042
+Activated
+37258
+Suspended
+
+-
+
+A map of Paddington
+
+MAP
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5017.765014101546!2d-0.1786033289063308!3d51.514460882632704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ab2b05500a7%3A0x749d07ad72bbbe13!2sPaddington+London+Underground+Station!5e0!3m2!1sen!2suk!4v1511535243058" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+-
+
+A little form
+
+DATE
+Select a date...
+
+INPUT
+Type something...
+
+BUTTON
+Click me
+#
 ```
