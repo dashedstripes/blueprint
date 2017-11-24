@@ -1,12 +1,126 @@
 let compiled = ''
 
-config.forEach((block) => {
-  renderBlock(block)
-})
+client.metadata().then((metadata) => {
+  let textConfig = metadata.settings.config
 
-setTimeout(() => {
-  client.invoke('resize', { width: '100%', height: $('#app').height() + 'px' })
-}, 500)
+  let config = []
+
+  let currentBlock = {
+    title: '',
+    content: []
+  }
+
+  for (let i = 0; i < textConfig.split('\n').length + 1; i++) {
+
+    let line = textConfig.split('\n')
+
+    if (line[i] !== undefined) {
+
+      if (line[i].trim() === '-') {
+        currentBlock = {
+          title: line[i + 2],
+          content: []
+        }
+        config.push(currentBlock)
+      }
+
+      if (line[i].trim() === 'IMAGE') {
+        currentBlock.content.push({
+          type: 'image',
+          data: {
+            src: line[i + 1],
+            alt: line[i + 2]
+          }
+        })
+      }
+
+      if (line[i].trim() === 'TEXT') {
+        currentBlock.content.push({
+          type: 'text',
+          data: {
+            text: line[i + 1]
+          }
+        })
+      }
+
+      if (line[i].trim() === 'TABLE') {
+        let tableData = []
+        for (let j = i + 2; j < textConfig.split('\n').length; j++) {
+          if (line[j] === '') {
+            break
+          }
+          tableData.push({
+            text: line[j]
+          })
+        }
+        currentBlock.content.push({
+          type: 'table',
+          columns: line[i + 1],
+          data: tableData
+        })
+      }
+
+      if (line[i].trim() === 'BUTTON') {
+        currentBlock.content.push({
+          type: 'button',
+          data: {
+            text: line[i + 1],
+            href: line[i + 2]
+          }
+        })
+      }
+
+      if (line[i].trim() === 'MAP') {
+        currentBlock.content.push({
+          type: 'map',
+          data: {
+            embed: line[i + 1]
+          }
+        })
+      }
+
+      if (line[i].trim() === 'DATE') {
+        currentBlock.content.push({
+          type: 'date',
+          data: {
+            placeholder: line[i + 1]
+          }
+        })
+      }
+
+      if (line[i].trim() === 'INPUT') {
+        currentBlock.content.push({
+          type: 'input',
+          data: {
+            placeholder: line[i + 1]
+          }
+        })
+      }
+
+      if (line[i].trim() === 'TEXT') {
+        currentBlock.content.push({
+          type: 'text',
+          data: {
+            placeholder: line[i + 1]
+          }
+        })
+      }
+
+    }
+
+  }
+
+  config.forEach((block) => {
+    renderBlock(block)
+  })
+
+  $('#app').html(compiled)
+  $('#datepicker').datepicker()
+
+  setTimeout(() => {
+    client.invoke('resize', { width: '100%', height: $('#app').height() + 'px' })
+  }, 500)
+})
 
 function renderBlock(block) {
   compiled += '<div class="block">'
@@ -92,6 +206,3 @@ function renderInput(data) {
 function renderMap(data) {
   compiled += data.embed
 }
-
-$('#app').html(compiled)
-$('#datepicker').datepicker()

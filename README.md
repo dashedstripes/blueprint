@@ -2,6 +2,8 @@
 
 This app allows you to build your own app by providing data. All layout and styling will be handled automatically.
 
+# README is out of date, will update soon with new instructions...
+
 ## How to use
 
 To create the config data for an app, create a file in `assets/data`, then in `assets/iframe.html` replace the script on line 18 to link to your custom config.
