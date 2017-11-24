@@ -1,12 +1,16 @@
 # Dynamic 360
 
-This app allows you to build your own static Zendesk app. You provide the data and all layout and styling will be handled automatically.
+A Zendesk ticket app that allows you to create your own static app from a plain text file.
 
-This readme is split into two sections. If you are looking to just install the app and configure it within Zendesk, read the "For Users" section. If you're a developer interested in how the config works inside the app, read the "For Developers" section.
+## Getting Started
 
-## For Users
+Download this repo as a ```.zip``` file, and install it to your Zendesk instance. In the Zendesk app settings, there will be a "config" field.
 
-I think the best way to explain how to write config for this app will be to show an example config, then explain what each part means. The below example shows everything you can do in your config.
+The config is made up of a list of sections. A section begins with the ```-``` character, and ends the line before the next ```-```.
+
+Each section consists of a ```title```, and a list of ```blocks```. 
+
+This is an example section containing an image ```block``` and a button ```block```
 
 ```
 -
@@ -15,74 +19,38 @@ Panamera 4 Executive
 
 IMAGE
 https://loremflickr.com/320/240
-A random picture
-
--
-
-Details
-
-TABLE
-3
-Power
-Acceleration
-Drive
-243 kW
-2.3 Seconds
-All Wheel Drive
+A picture of a car
 
 BUTTON
-Show Details
+Press me!
 #
 
--
-
-Find a Service Centre
-
-MAP
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2492.0791598488554!2d-0.483142684169452!3d51.346454979609156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876761d51b1c793%3A0xa1b9f87e35b40c23!2sPorsche+Service+Centre+Brooklands!5e0!3m2!1sen!2suk!4v1511345317754" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-
--
-
-Schedule an Inspection
-
-DATE
-Select a Date...
-
-INPUT
-Additional Notes...
-
-BUTTON
-Book
-#
-
--
-
-Additional Information
-
-TEXT
-The previous owner took care of this car for the past 5 years.
-He did a great job of it, don't you worry.
 ```
 
-Each section of an app begins with a ```-``` and a title for the section.
+As you can see, each block begins with a capitalized word (```IMAGE```, ```BUTTON```). The following lines are all to do with the block. The block ends at the next blank line.
 
-```
--
-
-Panamera 4 Executive
-
-```
-
-Once you have the start of a block and a title, you can begin to add content.
+For example, the ```IMAGE``` block has two lines below it that provide the data needed to display an image.
 
 ```
 IMAGE
-https://urltothepicture.com/picture.jpg
+The URL of the image
+The alt/title text for the image (what is the image of)
+```
+
+The same basic block structure is used for every block that you can use.
+
+Here is a list of all block types with their corosponding parameters. After listing these out, I will provide another list of blocks. This time filled out with "real" data.
+
+### Block Types
+
+```
+IMAGE
+The URL of the image
 The alt/title text for the image
 
 TABLE
 The number of rows
-A list of cells going from left to right
+A list of cells going from left to right, a row at a time.
 
 BUTTON
 The text to show on the button
@@ -96,151 +64,34 @@ The placeholder text for a datepicker
 
 INPUT
 The placeholder text for an input field
-
 ```
 
-Breaks between lines are very important for the text parsing to work correctly.
+### Example Blocks
 
-## For Developers
-
-### Creating your first block
-
-Here is a barebones start for creating the config object:
-
-```javascript
-let config = 
-  [
-    {
-      title: 'My block name', // This is the name of the block section, it will be shown as a heading.
-      content: [
-        // This is where your blocks (listed below) will go...
-      ]
-    }
-  ]
 ```
+IMAGE
+https://linkto.com/myimage.jpg
+This is an image.
 
-## List of all block types
+TABLE
+2
+ID
+Status
+10042
+Activated
+37258
+Suspended
 
-### Image
+BUTTON
+Click me
+#
 
-Show an image. The only data needed here is a link to the source of the image, and an "alt" tag that will be used for accessibility (such as when you hover your mouse over the image).
+MAP
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5017.765014101546!2d-0.1786033289063308!3d51.514460882632704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ab2b05500a7%3A0x749d07ad72bbbe13!2sPaddington+London+Underground+Station!5e0!3m2!1sen!2suk!4v1511535243058" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-```javascript
-{
-  type: 'image',
-  data: {
-    src: 'image.jpg',
-    alt: 'An Image'
-  }
-}
-```
+DATE
+Select a date...
 
-### Table
-
-Display a table. You need to provide how many columns the table has. This is so the styling can accurately manipulate the heading row.
-
-The data array consists of a list of object, all of which should be "text: 'something'".
-
-```javascript
-{
-  type: 'table',
-  columns: 3,
-  data: [
-    {
-      text: 'Name'
-    },
-    {
-      text: 'Age'
-    },
-    {
-      text: 'Class'
-    },
-    {
-      text: 'Buk'
-    },
-    {
-      text: '143'
-    },
-    {
-      text: 'Barbarian'
-    },
-    {
-      text: 'Braern Fenlynn'
-    },
-    {
-      text: '633'
-    },
-    {
-      text: 'Elf'
-    }
-  ]
-}
-```
-
-### Button
-
-Display a button. The data needed for a button is the text to display on it, and a href link to where you want to be redirected. For the purposes of demonstration it is best to leave it as '#'.
-
-```javascript
-{
-  type: 'button',
-  data: {
-    text: 'Click me!',
-    href: '#'
-  }
-}
-```
-
-### Text
-
-Display some text. The only data here is a text parameter with what you want to display.
-
-```javascript
-{
-  type: 'text',
-  data: {
-    text: 'The previous owner took care of this car for the past 5 years.'
-  }
-}
-```
-
-### Input
-
-Display a text input. Only data needed is the placeholder text.
-
-```javascript
-{
-  type: 'input',
-  data: {
-    placeholder: 'Enter your input here...'
-  }
-}
-```
-
-### Date
-
-Display a datepicker. Again, the only data needed is the placeholder text.
-
-```javascript
-{
-  type: 'date',
-  data: {
-    placeholder: 'Select a Date...'
-  }
-}
-```
-
-### Map
-
-Display an embeded Google Map. To get this working you will need to find the embed code from Google Maps of the place you wish to display. On Google Maps there is a link to "Share or embed map", once you've clicked that select "Embed map", then copy the code that it provides. It should look like the following:
-
-```<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19859.110532725816!2d-0.17612799999999998!3d51.524428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1511345810993" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>```
-
-```javascript
-{
-  type: 'map',
-  data: {
-    embed: 'Here is where you paste the google maps embed code.'
-  }
-}
+INPUT
+Type something...
 ```
