@@ -2,7 +2,7 @@
 
 This app allows you to build your own static Zendesk app. You provide the data and all layout and styling will be handled automatically.
 
-This readme is split into two section. If you are looking to just install the app and configure it within Zendesk, read the "For Users" section. If you're a developer interested in how the config works inside the app, read the "For Developers" section.
+This readme is split into two sections. If you are looking to just install the app and configure it within Zendesk, read the "For Users" section. If you're a developer interested in how the config works inside the app, read the "For Developers" section.
 
 ## For Users
 
