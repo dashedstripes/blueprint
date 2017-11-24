@@ -1,12 +1,107 @@
 # Dynamic 360
 
-This app allows you to build your own app by providing data. All layout and styling will be handled automatically.
+This app allows you to build your own static Zendesk app. You provide the data and all layout and styling will be handled automatically.
 
-# README is out of date, will update soon with new instructions...
+This readme is split into two section. If you are looking to just install the app and configure it within Zendesk, read the "For Users" section. If you're a developer interested in how the config works inside the app, read the "For Developers" section.
 
-## How to use
+## For Users
 
-To create the config data for an app, create a file in `assets/data`, then in `assets/iframe.html` replace the script on line 18 to link to your custom config.
+I think the best way to explain how to write config for this app will be to show an example config, then explain what each part means. The below example shows everything you can do in your config.
+
+```
+-
+
+Panamera 4 Executive
+
+IMAGE
+https://loremflickr.com/320/240
+A random picture
+
+-
+
+Details
+
+TABLE
+3
+Power
+Acceleration
+Drive
+243 kW
+2.3 Seconds
+All Wheel Drive
+
+BUTTON
+Show Details
+#
+
+-
+
+Find a Service Centre
+
+MAP
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2492.0791598488554!2d-0.483142684169452!3d51.346454979609156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876761d51b1c793%3A0xa1b9f87e35b40c23!2sPorsche+Service+Centre+Brooklands!5e0!3m2!1sen!2suk!4v1511345317754" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+-
+
+Schedule an Inspection
+
+DATE
+Select a Date...
+
+INPUT
+Additional Notes...
+
+BUTTON
+Book
+#
+
+-
+
+Additional Information
+
+TEXT
+The previous owner took care of this car for the past 5 years.
+He did a great job of it, don't you worry.
+```
+
+Each section of an app begins with a ```-``` and a title for the section.
+
+```
+-
+
+Panamera 4 Executive
+
+```
+
+Once you have the start of a block and a title, you can begin to add content.
+
+```
+IMAGE
+https://urltothepicture.com/picture.jpg
+The alt/title text for the image
+
+TABLE
+The number of rows
+A list of cells going from left to right
+
+BUTTON
+The text to show on the button
+Where the button will link to
+
+MAP
+An IFrame link taken from google maps
+
+DATE
+The placeholder text for a datepicker
+
+INPUT
+The placeholder text for an input field
+
+```
+
+Breaks between lines are very important for the text parsing to work correctly.
+
+## For Developers
 
 ### Creating your first block
 
