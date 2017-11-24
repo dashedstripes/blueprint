@@ -52,10 +52,12 @@ client.metadata().then((metadata) => {
 
       if (line[i].trim() === 'TABLE') {
         let tableData = []
-        for (let j = i + 2; j < textConfig.split('\n').length; j++) {
+        let numOfCols = 0
+        for (let j = i + 1; j < textConfig.split('\n').length; j++) {
           if (line[j] === '') {
             break
           }
+          numOfCols = line[j].split(', ').length
           line[j].split(', ').forEach((cell) => {
             tableData.push({
               text: cell
@@ -64,7 +66,7 @@ client.metadata().then((metadata) => {
         }
         currentBlock.content.push({
           type: 'table',
-          columns: line[i + 1],
+          columns: numOfCols,
           data: tableData
         })
       }
