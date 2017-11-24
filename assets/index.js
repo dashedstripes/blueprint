@@ -56,8 +56,10 @@ client.metadata().then((metadata) => {
           if (line[j] === '') {
             break
           }
-          tableData.push({
-            text: line[j]
+          line[j].split(', ').forEach((cell) => {
+            tableData.push({
+              text: cell
+            })
           })
         }
         currentBlock.content.push({
