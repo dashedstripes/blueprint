@@ -1,8 +1,8 @@
 {
   "app": {
     "name": "Blueprint",
-    "short_description": "Create your own App.",
+    "short_description": "Create your own ticket app.",
     "long_description": "A Zendesk ticket app that allows you to create your own static app from your own configuration.",
-    "installation_instructions": "Simply click install."
+    "installation_instructions": "Simply click install, then follow the configuration instructions at https://github.com/dashedstripes/blueprint"
   }
 }
