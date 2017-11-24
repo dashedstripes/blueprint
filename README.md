@@ -39,7 +39,7 @@ The alt/title text for the image (what is the image of)
 
 The same basic block structure is used for every block that you can use.
 
-Here is a list of all block types with their corosponding parameters. After listing these out, I will provide another list of blocks. This time filled out with "real" data.
+Here is a list of all block types with their corosponding parameters. After this I'll show how to fill them out using "real" data. Lastly I'll show these blocks inside of a completed config file.
 
 ### Block Types
 
@@ -50,7 +50,7 @@ The alt/title text for the image
 
 TABLE
 The number of rows
-A list of cells going from left to right, a row at a time.
+A list of cells going from left to right, separated by commas, a row at a time.
 
 MAP
 An IFrame link taken from google maps
@@ -75,12 +75,9 @@ This is an image.
 
 TABLE
 2
-ID
-Status
-10042
-Activated
-37258
-Suspended
+ID, Status
+10042, Activated
+37258, Suspended
 
 MAP
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5017.765014101546!2d-0.1786033289063308!3d51.514460882632704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ab2b05500a7%3A0x749d07ad72bbbe13!2sPaddington+London+Underground+Station!5e0!3m2!1sen!2suk!4v1511535243058" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -115,12 +112,8 @@ A table of stuff
 
 TABLE
 2
-ID
-Status
-10042
-Activated
-37258
-Suspended
+ID, Status, 10042
+Activated, 37258, Suspended
 
 -
 
