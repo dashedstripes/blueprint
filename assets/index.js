@@ -190,12 +190,13 @@ function renderImage(data) {
 }
 
 function renderText(data) {
+  compiled += '<div class="text-block">'
   data.text.split('\n').forEach((line) => {
     if (line !== '') {
       compiled += `<p>${line}</p>`
     }
   })
-  compiled += '<p><br/></p>'
+  compiled += '</div>'
 }
 
 function renderDate(data) {

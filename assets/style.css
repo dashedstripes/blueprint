@@ -53,3 +53,9 @@ iframe {
   width: 320px!important;
   height: 250px!important;
 }
+
+/* Text */
+
+.text-block {
+  margin-bottom: 10px;
+}
