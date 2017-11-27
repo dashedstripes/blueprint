@@ -134,3 +134,12 @@ BUTTON
 Click me
 #
 ```
+
+## Troubleshooting
+
+If your config isn't working, check you haven't made any of these common mistakes:
+
+- Extra whitespace at the end of a line.
+- Not adding a line break after a block.
+- In the table block, not adding a space after a comma.
+- Not capitalizing block names.
