@@ -69,7 +69,7 @@ Where the button will link to
 
 ```
 IMAGE
-https://linkto.com/myimage.jpg
+https://loremflickr.com/320/240
 This is an image.
 
 TABLE
@@ -101,7 +101,7 @@ Finally it's probably useful to see the above blocks in the context of a full co
 My Image
 
 IMAGE
-https://linkto.com/myimage.jpg
+https://loremflickr.com/320/240
 This is an image.
 
 -
