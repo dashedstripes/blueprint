@@ -19,7 +19,6 @@ ID, Status, Date
 
 BUTTON
 View full order history
-#
 
 -
 
@@ -32,7 +31,6 @@ ID, Product, Quantity, Price
 
 BUTTON
 Confirm Purchase
-#
 
 -
 
@@ -71,7 +69,6 @@ Amount of points
 
 BUTTON
 Submit
-#
 
 -
 

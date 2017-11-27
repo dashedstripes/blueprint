@@ -16,7 +16,6 @@ Power, Acceleration, Drive
 
 BUTTON
 Show Details
-#
 
 -
 
@@ -45,7 +44,6 @@ Additional Notes...
 
 BUTTON
 Book
-#
 
 -
 

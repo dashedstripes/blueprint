@@ -23,7 +23,6 @@ A picture of a car
 
 BUTTON
 Press me!
-#
 
 ```
 
@@ -62,7 +61,6 @@ The placeholder text for an input field
 
 BUTTON
 The text to show on the button
-Where the button will link to
 ```
 
 ### Example Blocks
@@ -88,7 +86,6 @@ Type something...
 
 BUTTON
 Click me
-#
 ```
 
 ### Completed Example Config
@@ -132,7 +129,6 @@ Type something...
 
 BUTTON
 Click me
-#
 ```
 
 ## Troubleshooting

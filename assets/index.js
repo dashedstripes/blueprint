@@ -76,7 +76,7 @@ client.metadata().then((metadata) => {
           type: 'button',
           data: {
             text: line[i + 1],
-            href: line[i + 2]
+            href: '#'
           }
         })
       }
