@@ -75,8 +75,7 @@ client.metadata().then((metadata) => {
         currentBlock.content.push({
           type: 'button',
           data: {
-            text: line[i + 1],
-            href: '#'
+            text: line[i + 1]
           }
         })
       }
@@ -186,7 +185,7 @@ function renderTable(data, columns) {
 }
 
 function renderButton(data) {
-  compiled += `<a href=${data.href} class="c-btn btn-full">${data.text}</a>`
+  compiled += `<a href="#" class="c-btn btn-full">${data.text}</a>`
 }
 
 function renderImage(data) {
