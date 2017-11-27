@@ -1,0 +1,88 @@
+-
+
+Orders
+
+TEXT
+Current Order
+
+TABLE
+ID, Status
+#7438-5932, Dispatched
+
+TEXT
+Order History
+
+TABLE
+ID, Status, Date
+#8574-3952, Shipped, 01/05/16
+#7584-3925, Shipped, 15/07/15
+
+BUTTON
+View full order history
+#
+
+-
+
+Basket
+
+TABLE
+ID, Product, Quantity, Price
+#1638-0943, Oversized Print Denim Jacket, 1, £30.00
+#8392-4321, Hedda Basic Strappy Cami Maxi Dress, 1, £80.00
+
+BUTTON
+Confirm Purchase
+#
+
+-
+
+Frequently Visited
+
+TABLE
+Location, Number of Visits, Average Spend
+Southwark Bridge Rd, 38 since 01/01/2016, £45
+
+MAP
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19859.110532725816!2d-0.17612799999999998!3d51.524428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1511528317089" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+-
+
+Last Visit
+
+TEXT
+10/04/2017
+
+-
+
+Loyalty Card
+
+TEXT
+Card Number: 8543-4932-5743
+Balance: £132.43
+
+TEXT
+Transfer Points
+
+INPUT
+Transfer number
+
+INPUT
+Amount of points
+
+BUTTON
+Submit
+#
+
+-
+
+Value
+
+TEXT
+VIP USER
+
+TEXT
+Lifetime Value
+
+TABLE
+Orders count, Total spent
+32, £3542
