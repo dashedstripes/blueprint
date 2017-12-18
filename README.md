@@ -50,6 +50,9 @@ The alt/title text for the image
 TABLE
 A list of cells going from left to right, separated by commas, a row at a time.
 
+TEXT
+A paragraph of text.
+
 MAP
 An IFrame link taken from google maps
 
@@ -69,6 +72,9 @@ The text to show on the button
 IMAGE
 https://loremflickr.com/320/240
 This is an image.
+
+TEXT
+This is a sample piece of text.
 
 TABLE
 ID, Status
@@ -103,7 +109,10 @@ This is an image.
 
 -
 
-A table of stuff
+Some text and a table of stuff
+
+TEXT
+This is a sample piece of text.
 
 TABLE
 ID, Status
