@@ -140,7 +140,7 @@ BUTTON
 Click me
 ```
 
-## Dynamic Content
+### Dynamic Content
 
 You can use dynamic content anywhere you can write text. The content you can use is as follows:
 
