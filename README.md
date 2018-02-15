@@ -142,7 +142,30 @@ Click me
 
 ## Dynamic Content
 
-You can use dynamic content anywhere you can write text
+You can use dynamic content anywhere you can write text. The content you can use is as follows:
+
+```
+{{ user.name }}
+{{ user.email }}
+
+{{ticket.subject}}
+```
+
+It might be helpful to see this in the context of an app, so here's an example block with a table and some content.
+
+```
+-
+
+Details for {{ user.name }}
+
+TEXT
+Owner "{{ user.name }}" can be contacted via {{ user.email }}. This ticket has the subject of "{{ ticket.subject }}".
+
+TABLE
+Power, Acceleration, Drive, Info
+243 kW, 2.3 Seconds, All Wheel, {{ user.name }} has mentioned they are having issues with power steering.
+
+```
 
 ## Troubleshooting
 

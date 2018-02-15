@@ -148,7 +148,7 @@ function renderBlock(block) {
 
 function renderBlockTitle(title) {
   let template = ''
-  template += `<h3 class="u-semibold">${title}</h3>`
+  template += `<h3 class="u-semibold">${parseDynamicContent(title)}</h3>`
   compiled += template
 }
 

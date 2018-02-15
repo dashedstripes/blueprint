@@ -9,7 +9,7 @@ config: |
 
   -
 
-  Details
+  Details {{ user.name }}
 
   TEXT
   Owner "{{ user.name }}" can be contacted via {{ user.email }}. This ticket has the subject of "{{ ticket.subject }}".
