@@ -140,6 +140,10 @@ BUTTON
 Click me
 ```
 
+## Dynamic Content
+
+You can use dynamic content anywhere you can write text
+
 ## Troubleshooting
 
 If your config isn't working, check you haven't made any of these common mistakes:

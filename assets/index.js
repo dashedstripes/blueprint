@@ -205,7 +205,7 @@ function renderButton(data) {
 }
 
 function renderImage(data) {
-  compiled += `<img src=${data.src} class="img-full" alt="${data.alt}" title="${data.alt}"/>`
+  compiled += `<img src=${data.src} class="img-full" alt="${parseDynamicContent(data.alt)}" title="${parseDynamicContent(data.alt)}"/>`
 }
 
 function renderText(data) {
