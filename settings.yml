@@ -11,12 +11,15 @@ config: |
 
   Details
 
+  TEXT
+  Owner "{{ user.name }}" can be contacted via {{ user.email }}. This ticket has the subject of "{{ ticket.subject }}".
+
   TABLE
   Power, Acceleration, Drive
-  243 kW, 2.3 Seconds, All Wheel Drive
+  243 kW, 2.3 Seconds, All Wheel
 
   BUTTON
-  Show Details
+  Show Details {{ user.name }}
 
   -
 

@@ -1,6 +1,22 @@
-let compiled = ''
+const attributes = ['ticket.requester.name', 'ticket.requester.email', 'ticket.subject']
 
-client.metadata().then((metadata) => {
+let compiled = ''
+let appData = {
+  user: {
+    name: '',
+    email: ''
+  },
+  ticket: {
+    subject: ''
+  }
+}
+
+client.get(attributes).then((data) => {
+  appData.user.name = data['ticket.requester.name']
+  appData.user.email = data['ticket.requester.email']
+  appData.ticket.subject = data['ticket.subject']
+  return client.metadata()
+}).then((metadata) => {
   let textConfig = metadata.settings.config
 
   let config = []
@@ -176,7 +192,7 @@ function renderTable(data, columns) {
         template += '<tr>'
       }
     }
-    template += `<td>${cell.text}</td>`
+    template += `<td>${parseDynamicContent(cell.text)}</td>`
   })
 
   template += '</table>'
@@ -185,7 +201,7 @@ function renderTable(data, columns) {
 }
 
 function renderButton(data) {
-  compiled += `<a href="#" class="c-btn btn-full">${data.text}</a>`
+  compiled += `<a href="#" class="c-btn btn-full">${parseDynamicContent(data.text)}</a>`
 }
 
 function renderImage(data) {
@@ -196,20 +212,59 @@ function renderText(data) {
   compiled += '<div class="text-block">'
   data.text.split('\n').forEach((line) => {
     if (line !== '') {
-      compiled += `<p>${line}</p>`
+      compiled += `<p>${parseDynamicContent(line)}</p>`
     }
   })
   compiled += '</div>'
 }
 
 function renderDate(data) {
-  compiled += `<input type="text" id="datepicker" placeholder="${data.placeholder}"/>`
+  compiled += `<input type="text" id="datepicker" placeholder="${parseDynamicContent(data.placeholder)}"/>`
 }
 
 function renderInput(data) {
-  compiled += `<input type="text" placeholder="${data.placeholder}"/>`
+  compiled += `<input type="text" placeholder="${parseDynamicContent(data.placeholder)}"/>`
 }
 
 function renderMap(data) {
   compiled += data.embed
+}
+
+function parseDynamicContent(line) {
+  const matcher = /{{\s(\w*\.\w*)\s}}/g
+  const contentMatcher = /(\w*\.\w*)/
+
+  let dynamicContent = line.match(matcher)
+
+  if (dynamicContent !== null) {
+    dynamicContent.forEach((content) => {
+      let parsed = content.match(contentMatcher)
+      line = line.replace(content, getDynamicContent(parsed[0]))
+    })
+  }
+
+  return line
+}
+
+function getDynamicContent(q) {
+  let query = q.split('.')
+
+  if (query[0] === 'user') {
+    switch (query[1]) {
+      case 'name':
+        return appData.user.name
+        break
+      case 'email':
+        return appData.user.email
+        break
+    }
+  }
+
+  if (query[0] === 'ticket') {
+    switch (query[1]) {
+      case 'subject':
+        return appData.ticket.subject
+        break
+    }
+  }
 }
