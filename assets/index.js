@@ -32,99 +32,100 @@ client.get(attributes).then((data) => {
 
     if (line[i] !== undefined) {
 
-      if (line[i].trim() === '-') {
-        currentBlock = {
-          title: line[i + 2],
-          content: []
-        }
-        config.push(currentBlock)
-      }
+      switch (line[i].trim()) {
 
-      if (line[i].trim() === 'IMAGE') {
-        currentBlock.content.push({
-          type: 'image',
-          data: {
-            src: line[i + 1],
-            alt: line[i + 2]
+        case '-':
+          currentBlock = {
+            title: line[i + 2],
+            content: []
           }
-        })
-      }
+          config.push(currentBlock)
+          break
 
-      if (line[i].trim() === 'TEXT') {
-        let textData = ''
-        for (let j = i + 1; j < textConfig.split('\n').length; j++) {
-          if (line[j] === '') {
-            break
-          }
-          textData += line[j] + '\n'
-        }
-        currentBlock.content.push({
-          type: 'text',
-          data: {
-            text: textData
-          }
-        })
-      }
-
-      if (line[i].trim() === 'TABLE') {
-        let tableData = []
-        let numOfCols = 0
-        for (let j = i + 1; j < textConfig.split('\n').length; j++) {
-          if (line[j] === '') {
-            break
-          }
-          numOfCols = line[j].split(', ').length
-          line[j].split(', ').forEach((cell) => {
-            tableData.push({
-              text: cell
-            })
+        case 'IMAGE':
+          currentBlock.content.push({
+            type: 'image',
+            data: {
+              src: line[i + 1],
+              alt: line[i + 2]
+            }
           })
-        }
-        currentBlock.content.push({
-          type: 'table',
-          columns: numOfCols,
-          data: tableData
-        })
-      }
+          break
 
-      if (line[i].trim() === 'BUTTON') {
-        currentBlock.content.push({
-          type: 'button',
-          data: {
-            text: line[i + 1]
+        case 'TEXT':
+          let textData = ''
+          for (let j = i + 1; j < textConfig.split('\n').length; j++) {
+            if (line[j] === '') {
+              break
+            }
+            textData += line[j] + '\n'
           }
-        })
-      }
+          currentBlock.content.push({
+            type: 'text',
+            data: {
+              text: textData
+            }
+          })
+          break
 
-      if (line[i].trim() === 'MAP') {
-        currentBlock.content.push({
-          type: 'map',
-          data: {
-            embed: line[i + 1]
+        case 'TABLE':
+          let tableData = []
+          let numOfCols = 0
+          for (let j = i + 1; j < textConfig.split('\n').length; j++) {
+            if (line[j] === '') {
+              break
+            }
+            numOfCols = line[j].split(', ').length
+            line[j].split(', ').forEach((cell) => {
+              tableData.push({
+                text: cell
+              })
+            })
           }
-        })
-      }
+          currentBlock.content.push({
+            type: 'table',
+            columns: numOfCols,
+            data: tableData
+          })
+          break
 
-      if (line[i].trim() === 'DATE') {
-        currentBlock.content.push({
-          type: 'date',
-          data: {
-            placeholder: line[i + 1]
-          }
-        })
-      }
+        case 'BUTTON':
+          currentBlock.content.push({
+            type: 'button',
+            data: {
+              text: line[i + 1]
+            }
+          })
+          break
 
-      if (line[i].trim() === 'INPUT') {
-        currentBlock.content.push({
-          type: 'input',
-          data: {
-            placeholder: line[i + 1]
-          }
-        })
-      }
+        case 'MAP':
+          currentBlock.content.push({
+            type: 'map',
+            data: {
+              embed: line[i + 1]
+            }
+          })
+          break
 
+        case 'DATE':
+          currentBlock.content.push({
+            type: 'date',
+            data: {
+              placeholder: line[i + 1]
+            }
+          })
+          break
+
+        case 'INPUT':
+          currentBlock.content.push({
+            type: 'input',
+            data: {
+              placeholder: line[i + 1]
+            }
+          })
+          break
+      }
     }
-
   }
 
   config.forEach((block) => {
