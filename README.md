@@ -167,6 +167,15 @@ Power, Acceleration, Drive, Info
 
 ```
 
+### Font Style
+
+You can use bold, and italic anywhere you can write text. This is done in a similar way to how markdown works.
+
+```
+You can *bold* text by adding *asterisks* around a *piece of text*.
+You can add _italics_ to text by adding _underscores_ around a _piece of text_.
+```
+
 ## Troubleshooting
 
 If your config isn't working, check you haven't made any of these common mistakes:

@@ -234,9 +234,11 @@ function parseText(line) {
   const dcMatcher = /{{\s(\w*\.\w*)\s}}/g
   const contentMatcher = /(\w*\.\w*)/
   const boldMatcher = /\*([^.*?$]+)\*/g
+  const italicMatcher = /\_([^.*?$]+)\_/g
 
   let dynamicContent = line.match(dcMatcher)
   let boldContent = line.match(boldMatcher)
+  let italicContent = line.match(italicMatcher)
 
   if (dynamicContent !== null) {
     dynamicContent.forEach((content) => {
@@ -249,6 +251,13 @@ function parseText(line) {
     boldContent.forEach((content) => {
       let parsed = content.replace(/\*/g, '')
       line = line.replace(content, getBoldContent(parsed))
+    })
+  }
+
+  if (italicContent !== null) {
+    italicContent.forEach((content) => {
+      let parsed = content.replace(/\_/g, '')
+      line = line.replace(content, getItalicContent(parsed))
     })
   }
 
@@ -280,4 +289,8 @@ function getDynamicContent(q) {
 
 function getBoldContent(word) {
   return `<strong>${word}</strong>`
+}
+
+function getItalicContent(word) {
+  return `<em>${word}</em>`
 }

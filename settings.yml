@@ -12,11 +12,11 @@ config: |
   Details {{ user.name }}
 
   TEXT
-  Owner "{{ user.name }}" can be *contacted* via {{ user.email }}. This ticket has the *subject* of "{{ ticket.subject }}".
+  Owner "{{ user.name }}" can be *contacted* via {{ user.email }}. This _ticket has_ the *subject* of "{{ ticket.subject }}".
 
   TABLE
   Power, Acceleration, Drive
-  *243 kW*, 2.3 Seconds, All Wheel
+  *243 kW*, 2.3 Seconds, _All Wheel_
 
   BUTTON
   Show Details {{ user.name }}
