@@ -12,11 +12,11 @@ config: |
   Details {{ user.name }}
 
   TEXT
-  Owner "{{ user.name }}" can be contacted via {{ user.email }}. This ticket has the subject of "{{ ticket.subject }}".
+  Owner "{{ user.name }}" can be *contacted* via {{ user.email }}. This ticket has the *subject* of "{{ ticket.subject }}".
 
   TABLE
   Power, Acceleration, Drive
-  243 kW, 2.3 Seconds, All Wheel
+  *243 kW*, 2.3 Seconds, All Wheel
 
   BUTTON
   Show Details {{ user.name }}
@@ -27,7 +27,7 @@ config: |
 
   TABLE
   Winter Wheels
-  20 Inch Panamera
+  *20 Inch Panamera*
 
   -
 
@@ -54,4 +54,4 @@ config: |
   Additional Information
 
   TEXT
-  The previous owner took care of this car for the past 5 years.
+  The previous owner took *care of this* car *for* the past 5 years.

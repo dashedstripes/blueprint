@@ -148,7 +148,7 @@ function renderBlock(block) {
 
 function renderBlockTitle(title) {
   let template = ''
-  template += `<h3 class="u-semibold">${parseDynamicContent(title)}</h3>`
+  template += `<h3 class="u-semibold">${parseText(title)}</h3>`
   compiled += template
 }
 
@@ -192,7 +192,7 @@ function renderTable(data, columns) {
         template += '<tr>'
       }
     }
-    template += `<td>${parseDynamicContent(cell.text)}</td>`
+    template += `<td>${parseText(cell.text)}</td>`
   })
 
   template += '</table>'
@@ -201,45 +201,54 @@ function renderTable(data, columns) {
 }
 
 function renderButton(data) {
-  compiled += `<a href="#" class="c-btn btn-full">${parseDynamicContent(data.text)}</a>`
+  compiled += `<a href="#" class="c-btn btn-full">${parseText(data.text)}</a>`
 }
 
 function renderImage(data) {
-  compiled += `<img src=${data.src} class="img-full" alt="${parseDynamicContent(data.alt)}" title="${parseDynamicContent(data.alt)}"/>`
+  compiled += `<img src=${data.src} class="img-full" alt="${parseText(data.alt)}" title="${parseText(data.alt)}"/>`
 }
 
 function renderText(data) {
   compiled += '<div class="text-block">'
   data.text.split('\n').forEach((line) => {
     if (line !== '') {
-      compiled += `<p>${parseDynamicContent(line)}</p>`
+      compiled += `<p>${parseText(line)}</p>`
     }
   })
   compiled += '</div>'
 }
 
 function renderDate(data) {
-  compiled += `<input type="text" id="datepicker" placeholder="${parseDynamicContent(data.placeholder)}"/>`
+  compiled += `<input type="text" id="datepicker" placeholder="${parseText(data.placeholder)}"/>`
 }
 
 function renderInput(data) {
-  compiled += `<input type="text" placeholder="${parseDynamicContent(data.placeholder)}"/>`
+  compiled += `<input type="text" placeholder="${parseText(data.placeholder)}"/>`
 }
 
 function renderMap(data) {
   compiled += data.embed
 }
 
-function parseDynamicContent(line) {
-  const matcher = /{{\s(\w*\.\w*)\s}}/g
+function parseText(line) {
+  const dcMatcher = /{{\s(\w*\.\w*)\s}}/g
   const contentMatcher = /(\w*\.\w*)/
+  const boldMatcher = /\*([^.*?$]+)\*/g
 
-  let dynamicContent = line.match(matcher)
+  let dynamicContent = line.match(dcMatcher)
+  let boldContent = line.match(boldMatcher)
 
   if (dynamicContent !== null) {
     dynamicContent.forEach((content) => {
       let parsed = content.match(contentMatcher)
       line = line.replace(content, getDynamicContent(parsed[0]))
+    })
+  }
+
+  if (boldContent !== null) {
+    boldContent.forEach((content) => {
+      let parsed = content.replace(/\*/g, '')
+      line = line.replace(content, getBoldContent(parsed))
     })
   }
 
@@ -267,4 +276,8 @@ function getDynamicContent(q) {
         break
     }
   }
+}
+
+function getBoldContent(word) {
+  return `<strong>${word}</strong>`
 }
